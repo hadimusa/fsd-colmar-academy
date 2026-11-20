@@ -6,7 +6,7 @@
 *{
     margin: 0;
     padding: 0;
-    /* outline: 1px dashed #ccc; */
+   /*  outline: 1px dashed #bbb; */
 }
 
 html
@@ -63,13 +63,18 @@ nav ul li:last-child{
     padding-right: 1.5rem;  /* remove padding from the last child */
 }
 
-/* TODO */
-/* To complete the navbar hyperlinks style */
-
-nav a{
+nav ul li a{
+    font-size: 0.75rem;
+}
+nav > a{
     display: flex;  /* set display to flex */
     align-items: center;  /* align items to center */
 }
+
+/* TODO */
+/* To complete the navbar hyperlinks style */
+
+
 
 /* Set up logo styles */
 .logo{
@@ -89,7 +94,7 @@ nav a{
 }
 
 .logoname-light{
-    font-weight: normal;  /* set font weight to normal */
+    font-weight: lighter;  /* set font weight to lighter */
     color: #aaa;  /* set color to light gray */
 }
 
@@ -110,21 +115,28 @@ header{
 }
 
 header > img{
-    width: 100%;  /* set width to 100% */
-    height: auto;  /* set height to auto */
+    max-width: 100%;  /* set width to 100% */
+    height: auto;     /* set height to auto */
+}
+
+header > div{
+    display: flex;
+    flex-direction: column;         /* set flex direction to column */
+    justify-content: space-evenly;  /* justify content to space evenly */
+    height: 18rem;                  /* set height to 18rem */
+    padding-right: 2rem;            /* Created a right padding for right header */
+    color:#484848 
+
 }
 
 header div > h1{
-    font-size: xx-large;  /* set font size to xx-large */
-    flex-direction: column;  /* set flex direction to column */
-    justify-content: space-evenly;  /* justify content to space evenly */
-    height: 6rem;  /* set height to 6rem */
-   /*  border: 4px solid #000; */  /* set border to 4px solid black */
+    font-size: xx-large;
 }
 
+
 header div > h2{
-    font-size: large;  /* set font size to x-large */
-    height: 3.5rem;  /* set height to 3.5rem */
+    font-size: x-large;  /* set font size to x-large */
+    color:#484848 
 }
 
 header div > a{
@@ -134,9 +146,12 @@ header div > a{
     width: 100%;  /* set width to 100% */
     text-align: center;  /* align text to center */
     padding: 0.5rem 0;  /* add padding to the top and bottom */
+    transition: background 0.3s ease;
 
 }
 /* hover effect for call to action link */
+
+
 
 
 /* Set up practice section */
@@ -147,7 +162,7 @@ header div > a{
     justify-content: flex-start;
 }
 
-.practice > .imgcontainer{
+.practice > .imgcontainer >img{
     max-width: 100%;  /* set max width to 100% */
     height: auto;  /* set height to auto */
 }
@@ -170,8 +185,10 @@ header div > a{
     display: block;  /* set display to block */
     padding: 2rem 0;  /* add padding to the top and bottom */
     font-weight:bold;  /* set font weight to bold */
+    margin: auto;
 }
 
+/* Set up events section */
 .events{
     display: grid;  /* set display to flex */
     grid-template-rows: repeat(3, min-content);  /* define grid rows */
@@ -187,7 +204,7 @@ header div > a{
     display: grid;  /* set display to grid */
     grid-template-columns: 0.35fr 0.65fr;  /* define grid columns */
     align-items: center;  /* align items to center */
-    border: 1px solid #e7e7e7;  /* add border */
+    border-bottom: 1px solid #e7e7e7;  /* add border */
     padding: 1rem;  /* add padding to the top and bottom */
 }
 
@@ -196,17 +213,27 @@ header div > a{
     height: auto;  /* set height to auto */
 }
 
-.events .events-text  h3{
-    font-size: medium;  /* set font size to medium */
+.events .events-img-mobile{
+    display: none;
 }
 
-.events .events-text  p{
+.events > .events-text{
+    margin-left: 1rem;
+    height: 100%;
+    align-content: center;
+}
+
+.events .events-text h3{
+    font-size: large;  /* set font size to medium */
+}
+
+.events .events-text p{
     margin: 0.5rem 0; 
-    font-size: smaller;  /* set font size to smaller */
+    font-size: small;  /* set font size to smaller */
 
 }
 
-.events .events-text  a{
+.events .events-text a{
     font-size: smaller;  /* set font size to smaller */
     color: #3434c6;  /* set color to  */
 }
@@ -237,9 +264,13 @@ footer > ul > li > a{
 footer > ul > li > a:visited{
     color: #f00;
 }
+
+/* Hide nav for mobile */
+#nav-mobile{
+    display: none;
+}
+
 /* Hide events mobile */
-
-
 /** ********************** **/
 /** End of Desktop Section **/
 
@@ -248,12 +279,98 @@ footer > ul > li > a:visited{
 
 /** Start of Mobile Section **/
 /** *********************** **/
-
 /* if the width of screen is 640px and below (aka 40rem x 16px) */
 @media screen and (max-width: 40rem ) {
+
+    /* Hide the desktop <nav> */
+    nav, .practice{
+        display: none;
+    }
+
+    /* Display  mobile nav*/
+    #nav-mobile{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        grid-column: full-start/ full-end;
+        height: 4rem;
     
+    }
+    header{
+        display: grid;
+        grid-column: full-start/full-end;
 
+    }
+
+    /* Update hero banner call-to-action */
+
+    .imgcontainer{
+        padding: 0;
+    }
+
+    header > div{
+        display: block;
+        width: auto;
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    header div > h1{
+        padding-bottom: 2rem;            /* ! padding-bottom 2rem */ 
+    
+    }
+
+    header div > h2{
+
+        padding-bottom: 1.5rem;         /* ! to add padding bottom 1.5rem */
+    }
+
+    header div > a{
+        margin-bottom: 2rem;
+    
+    }
+
+    .events{
+        display: grid;
+        grid-column: full-start / full-end;
+        border-left: none;
+    
+    }
+
+    .events > .events-block{
+        display:flex;
+        flex-direction: column;
+        border: none;
+        padding: 4rem 1rem 0 1 rem;
+    }
+
+    .events img{
+        display: none;
+        
+    }
+
+    .events .events-img-mobile{
+        display:block;
+        width: 100%;
+        height: auto;
+    }
+    
+    .events .events-text {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 5 rem;
+        margin-left: 1rem;
+        justify-content: space-evenly;
+    }
+
+    .events .events-text > h3{
+        padding-top: 1rem;
+    }
+
+    footer > ul{
+        display: none;
+    }
 }
-
 /* *********************** */
 /** End of Mobile Section **/
