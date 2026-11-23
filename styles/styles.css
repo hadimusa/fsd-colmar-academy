@@ -13,6 +13,7 @@ html
 {
     font-size: 16px;       /* 1rem used on the page = 16px */
     box-sizing: border-box;  /* box-sizing property is set to border-box for all elements */
+    
 }
 
 body
@@ -103,7 +104,7 @@ nav > a{
 
 /* Set up header area */
 header{
-    display: flex;  /* set display to flex */
+    display: grid;  /* set display to grid */
     align-items: center;  /* align items to center */
     justify-content: center;  /* justify content to center */
     background-color: #d8d8d8;  /* set background color to light gray */
@@ -151,13 +152,15 @@ header div > a{
 }
 /* hover effect for call to action link */
 
-
-
+a:hover {
+    transition: color 0.3s ease;
+    color: #007bff;
+}
 
 /* Set up practice section */
 
 .practice{
-    display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -165,6 +168,7 @@ header div > a{
 .practice > .imgcontainer >img{
     max-width: 100%;  /* set max width to 100% */
     height: auto;  /* set height to auto */
+
 }
 
 .practice > .practice-text{
@@ -209,8 +213,9 @@ header div > a{
 }
 
 .events img{
-    width: 100%;  /* set width to 100% */
+    width: 95%;  /* set width to 100% */
     height: auto;  /* set height to auto */
+    
 }
 
 .events .events-img-mobile{
@@ -221,6 +226,7 @@ header div > a{
     margin-left: 1rem;
     height: 100%;
     align-content: center;
+
 }
 
 .events .events-text h3{
@@ -238,14 +244,165 @@ header div > a{
     color: #3434c6;  /* set color to  */
 }
 
-/* Set up footer */
-footer{
-    font-size: 0.8rem;
+/* ! 4. Set up Start Learning */
+
+.learning {
+    background-color: #eaebec;
+    height: auto;
+    grid-column: full-start / full-end;
+}
+
+.learning-heading {
     display: flex;
-    grid-template-rows: full-start/ full-end;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0 0 0;
+    font-size: x-large;
+    font-weight: 800;
+    color: #4A4A4A;
+}
+
+.learning-container {
+    display: grid;
+    width: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 2rem;
+    margin: 2rem 4.5rem;
+}
+
+.card a{
+    text-decoration: none;
+    color: #797676;
+}
+.card h4{
+    margin: 1rem;
+    font-size: x-large;
+}
+.card-content{
+    margin: 1rem 1rem;
+    width: 60%;
+}
+
+.course {
+    padding: .5rem 0;
+
+}
+
+.card img{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.card{
+    background-color: #FFF;
+}
+
+.card:hover{
+    transform: scale(1.03);
+}
+
+.learning-mobile{
+    display: none;
+}
+
+/* ! 5. Set up Thesis-block section */
+
+.thesis {
+    grid-column: full-start / full-end;
+    padding: 2rem 1.5rem;
+    /* border: 2px solid red; */
+}
+
+.thesis-container {
+    display: grid;
+    grid-template-columns: 0.6fr 0.4fr;
+}
+
+.thesis-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: x-large;
+    font-weight: 800;
+    color: #4A4A4A;
+}
+
+.thesis-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-right: 1.5rem;
+}
+
+.thesis-left video {
+    width: 100%;
+}
+
+.thesis-left-content h3 {
+    color: #4A4A4A;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.thesis-left-content p {
+    color: #767676;
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.thesis-right {
+    display: grid;
+    grid-template-rows: repeat(3, 0.5fr);
+    grid-column: 0.4fr 0.6fr;
+}
+
+.thesis-card img {
+    width: 35%;
+    height: auto;
+}
+
+.thesis-card  {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem 0 1rem 1rem;
+}
+
+.thesis-card:first-child {
+    background-color: #d8d8d8;
+}
+
+.thesis-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.thesis-card-content h3 {
+    color: #4A4A4A;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.thesis-card-content p {
+    color: #767676;
+    margin-bottom: 2rem;
+}
+
+/* 6. Set up footer */
+
+footer{
+    /* border: 2px solid red; */
+    grid-column: full-start / full-end;
+    display: flex;
     justify-content: space-between;
+    font-size: 0.8rem;
     border-top: 1px solid #e7e7e7;
     padding: 1rem 1.5rem 2rem;
+    color: #4A4A4A;
 }
 
 footer > ul{
@@ -255,10 +412,6 @@ footer > ul{
 
 footer > ul > li{
     margin-right: 0.5rem;
-}
-
-footer > ul > li > a{
-    color: #3434c6;
 }
 
 footer > ul > li > a:visited{
@@ -368,8 +521,98 @@ footer > ul > li > a:visited{
         padding-top: 1rem;
     }
 
+    /* ! Learning for mobile */
+
+    /* Hides learning desktop version */
+
+    .learning { 
+        display: none;
+    }
+
+    .learning-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        grid-column: full-start / full-end;
+    }
+
+    .mobile-learning {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .mobile-learning a {
+        text-decoration: none;
+    }
+
+    .mobile-learning li:hover {
+        transform: scale(1.03);
+        background-color: #adadad;
+    }
+
+    .mobile-learning li {
+        list-style: none;
+        font-size: large;
+        font-weight: 600;
+        background-color: #D8D8D8;
+        margin: 1rem 1rem 0.5rem 1rem;
+        font-size: 1.2rem;
+        padding: 1.5rem 0 1.5rem 1rem;
+        color: #4b4b4b;
+    
+    }
+
+
+    .learning-heading-mobile {
+        font-size: xx-large;
+        margin-top: 2rem;
+        color: #4f4f4f;
+        
+    }
+
+
+    /* ! Thesis for mobile */
+
+    .thesis-left-content{
+        display: none;
+    }
+
+    .thesis-right{
+        display: none;
+    }
+        .thesis {
+        border-top: 1px solid #e9eaea;
+        padding: 0 0;
+    }
+
+    .thesis-heading {
+        font-size:xx-large;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .thesis-left {
+        padding: 0;
+        margin-bottom: 1.5rem;
+        grid-column: full-start / full-end;
+        height: auto;
+    }
+
+
+
+    /* Footer mobile */
+
     footer > ul{
         display: none;
+    }
+
+    .mobile-mode{
+        display:none;
+
     }
 }
 /* *********************** */
